@@ -15,11 +15,9 @@ jobs:
             - name: Checkout latest code
               uses: actions/checkout@v3
             - name: AWS Lambda FunctionCode Update
-              uses: taotao2345/aws-lambda-updatecode@v1.0.0
-              env:
-                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                AWS_REGION: ${{ secrets.AWS_REGION }}
-              with: 
+              uses: appleboy/lambda-action@v0.2.0
+              with:
+                aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                aws_region: ${{ secrets.AWS_REGION }}
                 function_name: firstFunction
-                zip_file: ./firstFunction.zip
