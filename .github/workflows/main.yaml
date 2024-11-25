@@ -1,0 +1,25 @@
+name: Upldate Lambda Function Code
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        name: deploy updated lambda function
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout latest code
+              uses: actions/checkout@v3
+            - name: AWS Lambda FunctionCode Update
+              uses: taotao2345/aws-lambda-updatecode@v1.0.0
+              env:
+                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                AWS_REGION: ${{ secrets.AWS_REGION }}
+              with: 
+                function_name: firstFunction
+                zip_file: firstFunction-9aa0f668-f2d2-43b3-b19c-e0c242d56345.zip
