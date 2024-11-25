@@ -22,3 +22,4 @@ jobs:
                 AWS_REGION: ${{ secrets.AWS_REGION }}
               with: 
                 function_name: firstFunction
+                zip_file: ./firstFunction.zip
